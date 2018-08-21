@@ -1,0 +1,59 @@
+---
+title: "FP"
+output: html_notebook
+---
+
+R语言系列：自定义function
+
+在用R语言做各种事物时，用户自定义函数是不可或缺的。这期来讲讲如何自定义R的function。首先要介绍的是function的基本框架：
+
+
+# 例子一：随机数产生，画图
+
+```{r}
+# 模板
+# myfunction <- function(arg1, arg2, ... ){
+#   statements
+#   return(object)
+# }
+
+plt <- function(x,y){
+  plot(x,y)
+  return(x+y)
+}
+
+x <- rnorm(10)
+y <- rnorm(10,2,3)
+plt(x,y)
+
+
+```
+
+
+# 例子二：判断、条件句 
+
+```{r}
+
+function2 <- function(x,npar=TRUE,print=TRUE) {
+  if (!npar) {
+    center <- mean(x); spread <- sd(x) 
+  } else {
+    center <- median(x); spread <- mad(x) 
+  }
+  if (print & !npar) {
+    cat("Mean=", center, "\n", "SD=", spread, "\n")
+  } else if (print & npar) {
+    cat("Median=", center, "\n", "MAD=", spread, "\n")
+  }
+  result <- list(center=center,spread=spread)
+  return(result)
+}
+
+x<-rnorm(10,0,5)
+x
+function2(x)
+
+```
+
+
+看懂这两，基本的函数应该可以实现，稍微复杂的，或别的更加复杂的函数，那就需要经验了。多练习多写代码是实现快速写代码的重要途径！

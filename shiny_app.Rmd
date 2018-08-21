@@ -1,0 +1,80 @@
+---
+title: "shiny_app"
+output: html_notebook
+---
+
+
+Structure of a Shiny App
+===========
+Shiny apps are contained in a single script called app.R. The script app.R lives in a directory (for example, newdir/) and the app can be run with runApp("newdir").
+
+**app.R has three components:**
+
+
+-a user interface object
+
+-a server function
+
+-a call to the shinyApp function
+
+
+the tutorial and much of the supporting documentation focus on single-file apps[ui.R and server.R].
+![](http://shiny.rstudio.com/tutorial/written-tutorial/lesson1/images/01_hello.png)
+
+ui > server > call_shiny
+=================================
+Here is the ui object for the Hello Shiny example.
+
+We’ll use the App-1 app you made in Lesson 1. To get started, open its app.R file. Edit the script to match the one below:
+
+```{r}
+library(shiny)
+
+# Define UI ----
+ui <- fluidPage(
+  
+)
+
+# Define server logic ----
+server <- function(input, output) {
+  
+}
+
+# Run the app ----
+shinyApp(ui = ui, server = server)
+```
+
+This code is the bare minimum needed to create a Shiny app. The result is an empty app with a blank user interface, an appropriate starting point for this lesson.
+
+
+Shiny和Plotly实现可交互DNA甲基化分析包ChAMP
+=====================
+我在英国留学的时候，遇到了ChAMP包的原作者，她已经不想再管这个软件了。所以我接手了，在用了一段时间之后，我实在感觉这个包没法用……所以将其升级了一下。用到了Shiny和Plotly两个我超级喜欢的R工具。
+
+目前最新的软件已经发布在了Bioconductor上。我也负责回答有关于这个软件的所有问题，处理bug，帮助全球科学家做分析等等。不过个人觉得，写这个软件也算是一个小工程问题。
+
+https://blog.csdn.net/Joshua_HIT/article/details/54982018
+
+
+```{r}
+source("http://bioconductor.org/biocLite.R")
+biocLite("ChAMP")
+biocLite("ChAMPdata")
+biocLite("DMRcate")
+biocLite("IlluminaHumanMethylation450kanno.ilmn12.hg19")
+biocLite("stringi")
+biocLite("minfi")
+```
+
+
+```{r}
+library("DMRcate")
+
+library("ChAMP")
+data(testDataSet)
+testDir=system.file("extdata",package="ChAMPdata")
+myLoad <- champ.load(testDir,arraytype="450K")
+```
+
+
+
