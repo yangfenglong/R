@@ -13,3 +13,14 @@ Parameters
 
 :returns: this is a description of what is returned
 :raises keyError: raises an exception
+
+  fdsCSNs for all cells, set cells = None (Default) otherwise input cells.liCSNs for all cells, set cells = None (Default) otherwise input cells.li
+  fds
+  fds
+  fds
+  fds
+  
+  
+  fds
+  
+  
